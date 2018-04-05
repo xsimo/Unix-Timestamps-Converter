@@ -19,12 +19,6 @@ namespace Timestamps
         public Form1()
         {
             InitializeComponent();
-            /*DateTime d = new DateTime();
-            long val = d.Ticks - UnixTimeStampTicks;
-            textBox1.Text = (val / 10000000) + "";
-            label1.Text = d.ToLongDateString() + "  " + d.ToLongTimeString();
-            heureDebut.Value = d.Hour;
-            minuteDebut.Value = d.Minute;*/
         }
 
         private void button1_Click(object sender, EventArgs e)
