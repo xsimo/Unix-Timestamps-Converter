@@ -12,7 +12,7 @@ namespace Timestamps
 {
     public partial class Form1 : Form
     {
-
+        static DateTimeDiff BigD;
         static long UnixTimeStampTicks = 621355968000000000;
         //DateTime.MaxValue == 3155378975999999999;
         
@@ -69,6 +69,12 @@ namespace Timestamps
             label1.Text = dUTC.ToLongDateString() + "  " + dUTC.ToLongTimeString() + " UTC";
             heureDebut.Value = d.Hour;
             minuteDebut.Value = d.Minute;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            BigD = new DateTimeDiff();
+            BigD.Visible = true;
         }
     }
 }
