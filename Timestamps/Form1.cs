@@ -76,5 +76,10 @@ namespace Timestamps
             BigD = new DateTimeDiff();
             BigD.Visible = true;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form1_Load(sender, e);
+        }
     }
 }
