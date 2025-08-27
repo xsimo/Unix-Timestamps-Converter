@@ -34,7 +34,9 @@ namespace Timestamps
                 TimeZone tz = TimeZone.CurrentTimeZone;
                 d = tz.ToLocalTime(d);
             }
-            label1.Text = dUTC.ToLongDateString() + "  " + dUTC.ToLongTimeString() + " UTC";
+            String prepa = dUTC.ToLongDateString() + "  " + dUTC.ToLongTimeString();
+            prepa += " UTC [ week n° " + getWeekNumberLikePHPNoOption(dUTC) + "]";
+            label1.Text = prepa;
 
             DateTime dMinuit = new DateTime(d.Year, d.Month, d.Day);
 
@@ -42,6 +44,23 @@ namespace Timestamps
             monthCalendar1.UpdateBoldedDates();
             heureDebut.Value = d.Hour;
             minuteDebut.Value = d.Minute;
+            secondesDebut.Value = d.Second;
+        }
+
+        private int getWeekNumberLikePHPNoOption(DateTime dUTC)
+        {
+            DateTime d = new DateTime(dUTC.Year, dUTC.Month, dUTC.Day);
+            DateTime referentiel = new DateTime(dUTC.Year, 1, 1);
+            int numeroDeSemaine = 1;
+            if (dUTC.DayOfWeek != 0 && referentiel < d)
+            {
+                referentiel.AddDays((double)(7.00 - ((double)dUTC.DayOfWeek)));
+            }
+            while (referentiel < d)
+            {
+                referentiel.AddDays(7);
+            }
+            return numeroDeSemaine;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -50,6 +69,7 @@ namespace Timestamps
 
             d = d.AddHours((double)heureDebut.Value);
             d = d.AddMinutes((double)minuteDebut.Value);
+            d = d.AddSeconds((double)secondesDebut.Value);
             if(!checkBox2.Checked)
             {
                 TimeZone tz = TimeZone.CurrentTimeZone;
@@ -69,6 +89,7 @@ namespace Timestamps
             label1.Text = dUTC.ToLongDateString() + "  " + dUTC.ToLongTimeString() + " UTC";
             heureDebut.Value = d.Hour;
             minuteDebut.Value = d.Minute;
+            secondesDebut.Value = d.Second;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -80,6 +101,13 @@ namespace Timestamps
         private void button4_Click(object sender, EventArgs e)
         {
             Form1_Load(sender, e);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DateTime calD = monthCalendar1.SelectionStart;
+            int weekNumber = getWeekNumberLikePHPNoOption(calD);
+            Console.WriteLine("week number = " + weekNumber);
         }
     }
 }

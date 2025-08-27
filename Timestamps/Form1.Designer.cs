@@ -42,8 +42,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.secondesDebut = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.minuteDebut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heureDebut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondesDebut)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -64,7 +68,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(380, 225);
+            this.label8.Location = new System.Drawing.Point(365, 226);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 24;
@@ -73,7 +77,7 @@
             // minuteDebut
             // 
             this.minuteDebut.AutoSize = true;
-            this.minuteDebut.Location = new System.Drawing.Point(339, 223);
+            this.minuteDebut.Location = new System.Drawing.Point(325, 224);
             this.minuteDebut.Maximum = new decimal(new int[] {
             59,
             0,
@@ -91,7 +95,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(299, 225);
+            this.label7.Location = new System.Drawing.Point(290, 226);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(34, 13);
             this.label7.TabIndex = 22;
@@ -99,7 +103,7 @@
             // 
             // heureDebut
             // 
-            this.heureDebut.Location = new System.Drawing.Point(258, 222);
+            this.heureDebut.Location = new System.Drawing.Point(249, 223);
             this.heureDebut.Maximum = new decimal(new int[] {
             23,
             0,
@@ -145,7 +149,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(429, 226);
+            this.checkBox2.Location = new System.Drawing.Point(350, 23);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(48, 17);
             this.checkBox2.TabIndex = 29;
@@ -182,11 +186,51 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(13, 226);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 33;
+            this.button5.Text = "semaine?";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // secondesDebut
+            // 
+            this.secondesDebut.AutoSize = true;
+            this.secondesDebut.Location = new System.Drawing.Point(410, 224);
+            this.secondesDebut.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.secondesDebut.Name = "secondesDebut";
+            this.secondesDebut.Size = new System.Drawing.Size(35, 20);
+            this.secondesDebut.TabIndex = 34;
+            this.secondesDebut.Value = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(449, 226);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "secondes";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 261);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.secondesDebut);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
@@ -206,6 +250,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.minuteDebut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heureDebut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondesDebut)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,6 +271,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.NumericUpDown secondesDebut;
+        private System.Windows.Forms.Label label3;
     }
 }
 
