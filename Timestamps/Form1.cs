@@ -54,11 +54,12 @@ namespace Timestamps
             int numeroDeSemaine = 1;
             if (dUTC.DayOfWeek != 0 && referentiel < d)
             {
-                referentiel.AddDays((double)(7.00 - ((double)dUTC.DayOfWeek)));
+                referentiel = referentiel.AddDays((double)(7.00 - ((double)dUTC.DayOfWeek)));
             }
             while (referentiel < d)
             {
-                referentiel.AddDays(7);
+                referentiel = referentiel.AddDays(7);
+                numeroDeSemaine++;
             }
             return numeroDeSemaine;
         }
@@ -90,6 +91,7 @@ namespace Timestamps
             heureDebut.Value = d.Hour;
             minuteDebut.Value = d.Minute;
             secondesDebut.Value = d.Second;
+            goldWeek.Checked = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -108,6 +110,7 @@ namespace Timestamps
             DateTime calD = monthCalendar1.SelectionStart;
             int weekNumber = getWeekNumberLikePHPNoOption(calD);
             Console.WriteLine("week number = " + weekNumber);
+            ader.Text = "w"+weekNumber;
         }
     }
 }

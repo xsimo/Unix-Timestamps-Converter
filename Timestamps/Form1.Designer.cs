@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
@@ -45,9 +46,15 @@
             this.button5 = new System.Windows.Forms.Button();
             this.secondesDebut = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.ader = new System.Windows.Forms.TextBox();
+            this.SilverWeek = new System.Windows.Forms.RadioButton();
+            this.bronzeWeek = new System.Windows.Forms.RadioButton();
+            this.radioButtonArray1 = new Microsoft.VisualBasic.Compatibility.VB6.RadioButtonArray(this.components);
+            this.goldWeek = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.minuteDebut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heureDebut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondesDebut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioButtonArray1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -190,9 +197,9 @@
             // 
             this.button5.Location = new System.Drawing.Point(13, 226);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(111, 23);
             this.button5.TabIndex = 33;
-            this.button5.Text = "semaine?";
+            this.button5.Text = "n° semaine / week #";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -223,11 +230,60 @@
             this.label3.TabIndex = 35;
             this.label3.Text = "secondes";
             // 
+            // ader
+            // 
+            this.ader.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ader.Location = new System.Drawing.Point(130, 224);
+            this.ader.Name = "ader";
+            this.ader.Size = new System.Drawing.Size(36, 25);
+            this.ader.TabIndex = 36;
+            this.ader.Text = "w52";
+            // 
+            // SilverWeek
+            // 
+            this.SilverWeek.AutoSize = true;
+            this.SilverWeek.Enabled = false;
+            this.SilverWeek.Location = new System.Drawing.Point(26, 164);
+            this.SilverWeek.Name = "SilverWeek";
+            this.SilverWeek.Size = new System.Drawing.Size(104, 17);
+            this.SilverWeek.TabIndex = 37;
+            this.SilverWeek.TabStop = true;
+            this.SilverWeek.Text = "starts january 1st";
+            this.SilverWeek.UseVisualStyleBackColor = true;
+            // 
+            // bronzeWeek
+            // 
+            this.bronzeWeek.AutoSize = true;
+            this.bronzeWeek.Enabled = false;
+            this.bronzeWeek.Location = new System.Drawing.Point(26, 187);
+            this.bronzeWeek.Name = "bronzeWeek";
+            this.bronzeWeek.Size = new System.Drawing.Size(75, 17);
+            this.bronzeWeek.TabIndex = 38;
+            this.bronzeWeek.TabStop = true;
+            this.bronzeWeek.Text = "first 4 days";
+            this.bronzeWeek.UseVisualStyleBackColor = true;
+            // 
+            // goldWeek
+            // 
+            this.goldWeek.AutoSize = true;
+            this.goldWeek.Enabled = false;
+            this.goldWeek.Location = new System.Drawing.Point(26, 210);
+            this.goldWeek.Name = "goldWeek";
+            this.goldWeek.Size = new System.Drawing.Size(86, 17);
+            this.goldWeek.TabIndex = 39;
+            this.goldWeek.TabStop = true;
+            this.goldWeek.Text = "first full week";
+            this.goldWeek.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 261);
+            this.Controls.Add(this.goldWeek);
+            this.Controls.Add(this.bronzeWeek);
+            this.Controls.Add(this.SilverWeek);
+            this.Controls.Add(this.ader);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.secondesDebut);
             this.Controls.Add(this.button5);
@@ -251,6 +307,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.minuteDebut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heureDebut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondesDebut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioButtonArray1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,6 +331,11 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.NumericUpDown secondesDebut;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox ader;
+        private System.Windows.Forms.RadioButton SilverWeek;
+        private System.Windows.Forms.RadioButton bronzeWeek;
+        private Microsoft.VisualBasic.Compatibility.VB6.RadioButtonArray radioButtonArray1;
+        private System.Windows.Forms.RadioButton goldWeek;
     }
 }
 
