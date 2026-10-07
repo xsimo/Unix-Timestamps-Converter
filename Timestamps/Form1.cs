@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Timestamps
 {
@@ -35,7 +36,8 @@ namespace Timestamps
                 d = tz.ToLocalTime(d);
             }
             String prepa = dUTC.ToLongDateString() + "  " + dUTC.ToLongTimeString();
-            prepa += " UTC [ week n° " + getWeekNumberLikePHPNoOption(dUTC) + "]";
+
+            prepa += " UTC [ week n° " + GetIso8601WeekOfYear(dUTC) + "]";
             label1.Text = prepa;
 
             DateTime dMinuit = new DateTime(d.Year, d.Month, d.Day);
@@ -46,22 +48,17 @@ namespace Timestamps
             minuteDebut.Value = d.Minute;
             secondesDebut.Value = d.Second;
         }
-
-        private int getWeekNumberLikePHPNoOption(DateTime dUTC)
+        // https://stackoverflow.com/a/11155102
+        private int GetIso8601WeekOfYear(DateTime dUTC)
         {
-            DateTime d = new DateTime(dUTC.Year, dUTC.Month, dUTC.Day);
-            DateTime referentiel = new DateTime(dUTC.Year, 1, 1);
-            int numeroDeSemaine = 1;
-            if (dUTC.DayOfWeek != 0 && referentiel < d)
+            CultureInfo fr_ca = new CultureInfo("fr-CA");
+            DateTime reference = dUTC.ToUniversalTime();
+            DayOfWeek day = fr_ca.Calendar.GetDayOfWeek(dUTC);
+            if (day >= DayOfWeek.Sunday && day <= DayOfWeek.Tuesday)
             {
-                referentiel = referentiel.AddDays((double)(7.00 - ((double)dUTC.DayOfWeek)));
+                reference = dUTC.AddDays(3);
             }
-            while (referentiel < d)
-            {
-                referentiel = referentiel.AddDays(7);
-                numeroDeSemaine++;
-            }
-            return numeroDeSemaine;
+            return fr_ca.Calendar.GetWeekOfYear(reference, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Sunday);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -108,7 +105,7 @@ namespace Timestamps
         private void button5_Click(object sender, EventArgs e)
         {
             DateTime calD = monthCalendar1.SelectionStart;
-            int weekNumber = getWeekNumberLikePHPNoOption(calD);
+            int weekNumber = GetIso8601WeekOfYear(calD);
             Console.WriteLine("week number = " + weekNumber);
             ader.Text = "w"+weekNumber;
         }
