@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
@@ -49,12 +48,14 @@
             this.ader = new System.Windows.Forms.TextBox();
             this.SilverWeek = new System.Windows.Forms.RadioButton();
             this.bronzeWeek = new System.Windows.Forms.RadioButton();
-            this.radioButtonArray1 = new Microsoft.VisualBasic.Compatibility.VB6.RadioButtonArray(this.components);
+            this.platineWeek = new System.Windows.Forms.RadioButton();
             this.goldWeek = new System.Windows.Forms.RadioButton();
+            this.groupBoxWeekRule = new System.Windows.Forms.GroupBox();
+            this.weekStartPreference = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.minuteDebut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heureDebut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondesDebut)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioButtonArray1)).BeginInit();
+            this.groupBoxWeekRule.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -195,7 +196,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(13, 226);
+            this.button5.Location = new System.Drawing.Point(13, 278);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(111, 23);
             this.button5.TabIndex = 33;
@@ -233,56 +234,94 @@
             // ader
             // 
             this.ader.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ader.Location = new System.Drawing.Point(130, 224);
+            this.ader.Location = new System.Drawing.Point(130, 277);
             this.ader.Name = "ader";
-            this.ader.Size = new System.Drawing.Size(36, 25);
+            this.ader.Size = new System.Drawing.Size(89, 25);
             this.ader.TabIndex = 36;
             this.ader.Text = "w52";
             // 
             // SilverWeek
             // 
             this.SilverWeek.AutoSize = true;
-            this.SilverWeek.Enabled = false;
-            this.SilverWeek.Location = new System.Drawing.Point(26, 164);
+            this.SilverWeek.Location = new System.Drawing.Point(6, 19);
             this.SilverWeek.Name = "SilverWeek";
             this.SilverWeek.Size = new System.Drawing.Size(104, 17);
-            this.SilverWeek.TabIndex = 37;
+            this.SilverWeek.TabIndex = 0;
             this.SilverWeek.TabStop = true;
             this.SilverWeek.Text = "starts january 1st";
             this.SilverWeek.UseVisualStyleBackColor = true;
+            this.SilverWeek.CheckedChanged += new System.EventHandler(this.weekRuleRadio_CheckedChanged);
             // 
             // bronzeWeek
             // 
             this.bronzeWeek.AutoSize = true;
-            this.bronzeWeek.Enabled = false;
-            this.bronzeWeek.Location = new System.Drawing.Point(26, 187);
+            this.bronzeWeek.Location = new System.Drawing.Point(6, 42);
             this.bronzeWeek.Name = "bronzeWeek";
             this.bronzeWeek.Size = new System.Drawing.Size(75, 17);
-            this.bronzeWeek.TabIndex = 38;
+            this.bronzeWeek.TabIndex = 1;
             this.bronzeWeek.TabStop = true;
             this.bronzeWeek.Text = "first 4 days";
             this.bronzeWeek.UseVisualStyleBackColor = true;
+            this.bronzeWeek.CheckedChanged += new System.EventHandler(this.weekRuleRadio_CheckedChanged);
+            // 
+            // platineWeek
+            // 
+            this.platineWeek.AutoSize = true;
+            this.platineWeek.Location = new System.Drawing.Point(6, 65);
+            this.platineWeek.Name = "platineWeek";
+            this.platineWeek.Size = new System.Drawing.Size(132, 17);
+            this.platineWeek.TabIndex = 2;
+            this.platineWeek.TabStop = true;
+            this.platineWeek.Text = "First 4 days (ISO-8601)";
+            this.platineWeek.UseVisualStyleBackColor = true;
+            this.platineWeek.CheckedChanged += new System.EventHandler(this.weekRuleRadio_CheckedChanged);
             // 
             // goldWeek
             // 
             this.goldWeek.AutoSize = true;
-            this.goldWeek.Enabled = false;
-            this.goldWeek.Location = new System.Drawing.Point(26, 210);
+            this.goldWeek.Checked = true;
+            this.goldWeek.Location = new System.Drawing.Point(6, 88);
             this.goldWeek.Name = "goldWeek";
             this.goldWeek.Size = new System.Drawing.Size(86, 17);
-            this.goldWeek.TabIndex = 39;
+            this.goldWeek.TabIndex = 3;
             this.goldWeek.TabStop = true;
             this.goldWeek.Text = "first full week";
             this.goldWeek.UseVisualStyleBackColor = true;
+            this.goldWeek.CheckedChanged += new System.EventHandler(this.weekRuleRadio_CheckedChanged);
+            // 
+            // groupBoxWeekRule
+            // 
+            this.groupBoxWeekRule.Controls.Add(this.SilverWeek);
+            this.groupBoxWeekRule.Controls.Add(this.platineWeek);
+            this.groupBoxWeekRule.Controls.Add(this.bronzeWeek);
+            this.groupBoxWeekRule.Controls.Add(this.goldWeek);
+            this.groupBoxWeekRule.Location = new System.Drawing.Point(10, 150);
+            this.groupBoxWeekRule.Name = "groupBoxWeekRule";
+            this.groupBoxWeekRule.Size = new System.Drawing.Size(156, 115);
+            this.groupBoxWeekRule.TabIndex = 37;
+            this.groupBoxWeekRule.TabStop = false;
+            this.groupBoxWeekRule.Text = "week rule";
+            // 
+            // weekStartPreference
+            // 
+            this.weekStartPreference.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weekStartPreference.FormattingEnabled = true;
+            this.weekStartPreference.Items.AddRange(new object[] {
+            "A week starts on Sunday",
+            "A week starts on Monday"});
+            this.weekStartPreference.Location = new System.Drawing.Point(225, 280);
+            this.weekStartPreference.Name = "weekStartPreference";
+            this.weekStartPreference.Size = new System.Drawing.Size(151, 21);
+            this.weekStartPreference.TabIndex = 38;
+            this.weekStartPreference.SelectedIndexChanged += new System.EventHandler(this.weekStartPreference_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 261);
-            this.Controls.Add(this.goldWeek);
-            this.Controls.Add(this.bronzeWeek);
-            this.Controls.Add(this.SilverWeek);
+            this.ClientSize = new System.Drawing.Size(501, 315);
+            this.Controls.Add(this.weekStartPreference);
+            this.Controls.Add(this.groupBoxWeekRule);
             this.Controls.Add(this.ader);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.secondesDebut);
@@ -307,7 +346,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.minuteDebut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heureDebut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondesDebut)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioButtonArray1)).EndInit();
+            this.groupBoxWeekRule.ResumeLayout(false);
+            this.groupBoxWeekRule.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,8 +374,10 @@
         private System.Windows.Forms.TextBox ader;
         private System.Windows.Forms.RadioButton SilverWeek;
         private System.Windows.Forms.RadioButton bronzeWeek;
-        private Microsoft.VisualBasic.Compatibility.VB6.RadioButtonArray radioButtonArray1;
+        private System.Windows.Forms.RadioButton platineWeek;
         private System.Windows.Forms.RadioButton goldWeek;
+        private System.Windows.Forms.GroupBox groupBoxWeekRule;
+        private System.Windows.Forms.ComboBox weekStartPreference;
     }
 }
 
