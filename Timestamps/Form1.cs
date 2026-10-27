@@ -39,6 +39,7 @@ namespace Timestamps
 
             prepa += " UTC [ week n° " + GetIso8601WeekOfYear(dUTC) + "]";
             label1.Text = prepa;
+            UpdateWeekNumberDisplay(dUTC);
 
             DateTime dMinuit = new DateTime(d.Year, d.Month, d.Day);
 
@@ -61,6 +62,11 @@ namespace Timestamps
             return fr_ca.Calendar.GetWeekOfYear(reference, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Sunday);
         }
 
+        private void UpdateWeekNumberDisplay(DateTime dUTC)
+        {
+            ader.Text = "w" + GetIso8601WeekOfYear(dUTC);
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             DateTime d = monthCalendar1.SelectionStart;
@@ -76,6 +82,7 @@ namespace Timestamps
             long val = d.Ticks - UnixTimeStampTicks;
             textBox1.Text= (val/ 10000000 ) + "";
             label1.Text = d.ToLongDateString() + "  " + d.ToLongTimeString() + " UTC";
+            UpdateWeekNumberDisplay(d);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -85,6 +92,7 @@ namespace Timestamps
             long val = dUTC.Ticks - UnixTimeStampTicks;
             textBox1.Text = (val / 10000000) + "";
             label1.Text = dUTC.ToLongDateString() + "  " + dUTC.ToLongTimeString() + " UTC";
+            UpdateWeekNumberDisplay(dUTC);
             heureDebut.Value = d.Hour;
             minuteDebut.Value = d.Minute;
             secondesDebut.Value = d.Second;
